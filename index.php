@@ -28,9 +28,19 @@ try {
     die($exception->getMessage());// la flèche c'est la meme chose que le point en JS donc on va chercher une propriete d'un object
 }// try va lancer une exception et on doit l'attraper avec catch on mets le type PDO exception et la variable
 
-$a = isset($_REQUEST['a'])?$_REQUEST['a']:'index';
-$e = isset($_REQUEST['e'])?$_REQUEST['e']:'books';//les mots decrivent les actions a faire
+include ('routes.php');
 
+$defaultRoute=$routes['default'];
+
+$routeParts=explode('_',$defaultRoute);
+
+$a = isset($_REQUEST['a'])?$_REQUEST['a']:$routeParts[0];// affichera index
+$e = isset($_REQUEST['e'])?$_REQUEST['e']:$routeParts[1];// affichera books, les mots decrivent les actions a faire
+
+if (!in_array($a.'_'.$e,$routes)){
+    //redirection 404
+    die('Ce que vous cherchez n\'est pas ici');
+}
 
 include($e.'controller.php');
 
