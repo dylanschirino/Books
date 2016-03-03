@@ -7,7 +7,8 @@
  */
 $viewDir = __DIR__.'/views';//on concate de la racine de l'ordi a views __DIR__ c'est la racine
 $modelsDir= __DIR__.'/models';
-set_include_path($viewDir.PATH_SEPARATOR.$modelsDir.PATH_SEPARATOR.get_include_path());//on ajoute le repertoire des vues a la liste des repertoires
+$controllersDir= __DIR__.'/controllers';
+set_include_path($viewDir.PATH_SEPARATOR.$modelsDir.PATH_SEPARATOR.$controllersDir.PATH_SEPARATOR.get_include_path());//on ajoute le repertoire des vues a la liste des repertoires
 $dbConfig = parse_ini_file('db.ini');// on parcourt et on extrait de l'info dedans
 
 $pdoOptions = [
@@ -27,13 +28,12 @@ try {
     die($exception->getMessage());// la flèche c'est la meme chose que le point en JS donc on va chercher une propriete d'un object
 }// try va lancer une exception et on doit l'attraper avec catch on mets le type PDO exception et la variable
 
-include('books.php');
-if(isset($_GET['id'])){
-    $id = intval($_GET['id']); //pour empecher les injections sql on ne prend que des entiers ici avec intval
-    $data = getBook($id);
-}else {
-    $data=getBooks();
-}
+$a = isset($_REQUEST['a'])?$_REQUEST['a']:'index';
+$e = isset($_REQUEST['e'])?$_REQUEST['e']:'books';//les mots decrivent les actions a faire
 
+
+include($e.'controller.php');
+
+$data = call_user_func($a);//ca nous renvoye des données qu'on stocke dans data
 
 include('view.php');//affiche les titres des livres.
