@@ -24,8 +24,19 @@ try {
     die($exception->getMessage());// la flèche c'est la meme chose que le point en JS donc on va chercher une propriete d'un object
 }// try va lancer une exception et on doit l'attraper avec catch on mets le type PDO exception et la variable
 
-$sqlBooks = 'SELECT * FROM books';
-$pdoSt = $connection ->query($sqlBooks);//on mets dans une variable pdo la requete puis on la mets dans $books pour la fecther, la recuperer
-$books = $pdoSt->fetchAll();// pour recuper les lignes de la base de données
+if(isset($_GET['id'])){
+    $id = intval($_GET['id']); //pour empecher les injections sql on ne prend que des entiers ici avec intval
+    $sqlBook = 'SELECT * FROM books WHERE id= :id'; //on récupere un livre en particulier sur base de son ID
+    $pdoSt = $connection -> prepare($sqlBook);
+    $pdoSt -> execute([':id'=>$id]);// on execute en remplacant par la valeur recupere dans l'url de $id
+    $book=$pdoSt->fetch();
+    $view ='singlebook.php';
+}else{
+    $sqlBooks = 'SELECT * FROM books';
+    $pdoSt = $connection ->query($sqlBooks);//on mets dans une variable pdo la requete puis on la mets dans $books pour la fecther, la recuperer
+    $books = $pdoSt->fetchAll();// pour recuper les lignes de la base de données
+    $view = 'allbooks.php';
+}
+
 
 include ('view.php');//affiche les titres des livres.
