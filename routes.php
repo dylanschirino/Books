@@ -7,6 +7,7 @@
  */
 //On definit les 2 routes qu'on autorise
 $routes =[
-    'default'=>'index_books',
-    'showbooks'=>'show_books'
+    'default'=>'index_authors',
+    'showbooks'=>'show_authors',
 ];
+
