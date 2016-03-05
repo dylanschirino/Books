@@ -6,12 +6,12 @@
 </div>
 <?php endif; ?>
 <?php if($data['author']->birth_date): ?>
-<div class="summary">
+<div class="birthdate">
     <?php echo $data['author']->birth_date;?>
 </div>
 <?php endif; ?>
 <?php if($data['author']->death_date): ?>
-    <div class="summary">
+    <div class="deathdate">
         <?php echo $data['author']->death_date;?>
     </div>
 <?php endif; ?>

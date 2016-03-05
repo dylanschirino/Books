@@ -6,8 +6,10 @@
  * Time: 16:56
  */
 //On definit les 2 routes qu'on autorise
-$routes =[
-    'default'=>'index_authors',
-    'showbooks'=>'show_authors',
-];
+$tab=['books','editors','authors'];
+    $routes = [
+        'default' => 'index_' . $tab[0] ,
+        'showbooks' => 'show_' . $tab[0]
+    ];
+
 
