@@ -24,7 +24,7 @@
 <?php endif; ?>
 <?php if($data['editor']->nationality_id): ?>
     <div class="nationality">
-        <?php echo $data['editor']->nationality_id;?>
+        <?php echo $data['editor']->nationality;?>
     </div>
 <?php endif; ?>
 <?php if($data['editor']->date_of_creation): ?>
@@ -35,6 +35,11 @@
 <?php if($data['editor']->date_of_closing): ?>
     <div class="creation">
         <?php echo $data['editor']->date_of_closing;?>
+    </div>
+<?php endif; ?>
+<?php if($data['editor']->editor_id): ?>
+    <div class="livre">
+        <?php echo'Livre '.$data['editor']->title;?>
     </div>
 <?php endif; ?>
 <div class="allbooks">

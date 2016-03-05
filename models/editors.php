@@ -14,7 +14,7 @@ function getEditors()
 }
 function getEditor($id)
 {
-    $sqlEditor = 'SELECT * FROM editors WHERE id= :id'; //on récupere un livre en particulier sur base de son ID
+    $sqlEditor = 'SELECT * FROM editors JOIN books ON (editors.id=editor_id) JOIN nationalities ON (nationalities.id=editors.nationality_id)WHERE editors.id= :id'; //on récupere un livre en particulier sur base de son ID
     $pdoSt = $GLOBALS['connection'] -> prepare($sqlEditor);
     $pdoSt -> execute([':id'=>$id]);// on execute en remplacant par la valeur recupere dans l'url de $id
     return $pdoSt->fetch();
