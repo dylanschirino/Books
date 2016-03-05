@@ -6,7 +6,7 @@
  * Time: 12:20
  */
  -->
-<h1> <?php echo $data['editor'] -> name; ?></h1>
+<h1> <?php echo $data['editor'] -> names; ?></h1>
 <?php if($data['editor'] ->logo): ?>
     <div class="logo">
         <img src="<?php echo $data['editor']->logo; ?>" alt="">
@@ -37,7 +37,7 @@
         <?php echo $data['editor']->date_of_closing;?>
     </div>
 <?php endif; ?>
-<?php if($data['editor']->editor_id): ?>
+<?php if($data['editor']->title): ?>
     <div class="livre">
         <?php echo'Livre '.$data['editor']->title;?>
     </div>

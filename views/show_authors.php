@@ -11,13 +11,13 @@
 </div>
 <?php endif; ?>
 <?php if($data['author']->death_date): ?>
-    <div class="deathdate">
+    <div class="">
         <?php echo $data['author']->death_date;?>
     </div>
 <?php endif; ?>
 <?php if($data['author']->nationality_id): ?>
     <div class="nationality">
-        <?php echo $data['author']->nationality_id;?>
+        <?php echo'Nationalité : '.$data['author']->nationality;?>
     </div>
 <?php endif; ?>
 <?php if($data['author']->bio): ?>
@@ -25,6 +25,11 @@
         <?php echo $data['author']->bio;?>
     </div>
 <?php endif; ?>
+<?php if($data['author']->title): ?>
+    <div class="livre">
+        <?php echo 'Livre : '.$data['author']->title;?>
+    </div>
+<?php endif; ?>
 <div class="allbooks">
-    <a href="<?php echo $_SERVER['PHP_SELF'];?>">Retour vers tous les livres </a>
+    <a href="<?php echo $_SERVER['PHP_SELF'];?>">Retour vers les auteurs </a>
 </div>

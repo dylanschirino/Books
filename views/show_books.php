@@ -7,18 +7,22 @@
 <?php endif; ?>
 <?php if($data['book']->isbn): ?>
     <div class="isbn">
-        <?php echo $data['book']->isbn;?>
+        <?php echo'ISBN : '.$data['book']->isbn;?>
     </div>
 <?php endif; ?>
-
 <?php if($data['book']->summary): ?>
 <div class="summary">
     <?php echo $data['book']->summary;?>
 </div>
 <?php endif; ?>
-<?php if($data['book']->editor_id): ?>
+<?php if($data['book']->names): ?>
     <div class="editor">
-        <?php echo $data['book']->name;?>
+        <?php echo 'Editeur : '.$data['book']->names;?>
+    </div>
+<?php endif; ?>
+<?php if($data['book']->name): ?>
+    <div class="auteur">
+        <?php echo'Auteur : '.$data['book']->name;?>
     </div>
 <?php endif; ?>
 <div class="allbooks">

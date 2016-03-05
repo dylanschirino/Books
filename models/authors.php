@@ -14,7 +14,7 @@ function getAuthors()
 }
 function getAuthor($id)
 {
-    $sqlAuthor = 'SELECT * FROM authors WHERE id= :id'; //on récupere un livre en particulier sur base de son ID
+    $sqlAuthor = 'SELECT * FROM authors JOIN author_book ON (authors.id=author_id) JOIN books ON (books.id=book_id) JOIN nationalities ON (nationalities.id=authors.nationality_id) WHERE authors.id= :id'; //on récupere un livre en particulier sur base de son ID
     $pdoSt = $GLOBALS['connection'] -> prepare($sqlAuthor);
     $pdoSt -> execute([':id'=>$id]);// on execute en remplacant par la valeur recupere dans l'url de $id
     return $pdoSt->fetch();
