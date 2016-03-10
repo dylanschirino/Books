@@ -1,26 +1,33 @@
 <?php
-/**
- * File: bookscontroller.php
- * User: Dylan Schirino
- * Date: 3/03/16
- * Time: 16:26
- */
 
-function index(){
-    include ('books.php');
-    $books=getBooks();
-    $view = $GLOBALS['a'].'_'.$GLOBALS['e'].'.php';
-    return['books'=>$books,'view'=>$view];
-}
-function show(){
-    include ('books.php');
+class BooksController
+{
+    private $books_model = null;
+    public function __construct()
+    {
+        $this->books_model = new Books();
+    }
 
-    if(isset($_GET['id'])){
-        $id = intval($_GET['id']); //pour empecher les injections sql on ne prend que des entiers ici avec intval
-        $book = getBook($id);
-        $view = $GLOBALS['a'].'_'.$GLOBALS['e'].'.php';
-        return['book'=>$book,'view'=>$view];
-    }else {
-        die('il manque un identifiant a votre livre');
+    function index()
+    {
+        $books =$this->books_model->all();
+        $view = 'index_books.php';
+        $page_title='La liste des livres';
+        return ['books' => $books, 'view' => $view,'page_title'=>$page_title];
+    }
+
+    function show()
+    {
+
+
+        if (isset($_GET['id'])) {
+            $id = intval($_GET['id']); //pour empecher les injections sql on ne prend que des entiers ici avec intval
+            $book =$this->books_model->find($id);
+            $view = 'show_books.php';
+            $page_title='La fiche du livre&nbsp;: '.$book->title;
+            return ['book' => $book, 'view' => $view,'page_title'=>$page_title];
+        } else {
+            die('il manque un identifiant a votre livre');
+        }
     }
 }

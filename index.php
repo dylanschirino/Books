@@ -9,6 +9,11 @@ $viewDir = __DIR__.'/views';//on concate de la racine de l'ordi a views __DIR__ 
 $modelsDir= __DIR__.'/models';
 $controllersDir= __DIR__.'/controllers';
 set_include_path($viewDir.PATH_SEPARATOR.$modelsDir.PATH_SEPARATOR.$controllersDir.PATH_SEPARATOR.get_include_path());//on ajoute le repertoire des vues a la liste des repertoires
+
+spl_autoload_register(function($class){
+    include($class.'.php');
+});
+
 $dbConfig = parse_ini_file('db.ini');// on parcourt et on extrait de l'info dedans
 
 $pdoOptions = [
@@ -43,8 +48,10 @@ if (!in_array($a.'_'.$e,$routes)){
     die('Ce que vous cherchez n\'est pas ici');
 }
 
-include($e.'controller.php');
+$controller_name = ucfirst($e).'Controller';//on mets la premiere lettre en majuscule
 
-$data = call_user_func($a);//ca nous renvoye des données qu'on stocke dans data
+$controller = new $controller_name();
+$data = call_user_func([$controller,$a]);//ca nous renvoye des données qu'on stocke dans data
+
 
 include('view.php');//affiche les titres des livres.

@@ -15,9 +15,9 @@
     <?php echo 'Résumer : '.$data['book']->summary;?>
 </div>
 <?php endif; ?>
-<?php if($data['book']->names): ?>
+<?php if($data['book']->name): ?>
     <div class="editor">
-        <?php echo'Editeur: '. $data['book']->names;?>
+        <?php echo'Editeur: '. $data['book']->name;?>
     </div>
 <?php endif; ?>
 <?php if($data['book']->name): ?>
