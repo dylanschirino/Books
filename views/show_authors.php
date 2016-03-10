@@ -7,12 +7,12 @@
 <?php endif; ?>
 <?php if($data['author']->birth_date): ?>
 <div class="birthdate">
-    <?php echo $data['author']->birth_date;?>
+    <?php echo 'Né(e)  : '.$data['author']->birth_date;?>
 </div>
 <?php endif; ?>
 <?php if($data['author']->death_date): ?>
     <div class="">
-        <?php echo $data['author']->death_date;?>
+        <?php echo 'Mort le  : '.$data['author']->death_date;?>
     </div>
 <?php endif; ?>
 <?php if($data['author']->nationality_id): ?>
@@ -22,7 +22,7 @@
 <?php endif; ?>
 <?php if($data['author']->bio): ?>
     <div class="bio">
-        <?php echo $data['author']->bio;?>
+        <?php echo 'Description : '.$data['author']->bio;?>
     </div>
 <?php endif; ?>
 <?php if($data['author']->title): ?>

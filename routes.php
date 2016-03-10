@@ -8,8 +8,8 @@
 //On definit les 2 routes qu'on autorise
 $tab=['books','editors','authors'];
     $routes = [
-        'default' => 'index_' . $tab[rand(0,2)] ,
-        'showbooks' => 'show_' . $tab[1]
+        'default' => 'index_' . $tab[1] ,
+        'show' => 'show_' . $tab[1]
     ];
 
 

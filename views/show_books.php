@@ -12,12 +12,12 @@
 <?php endif; ?>
 <?php if($data['book']->summary): ?>
 <div class="summary">
-    <?php echo $data['book']->summary;?>
+    <?php echo 'Résumer : '.$data['book']->summary;?>
 </div>
 <?php endif; ?>
 <?php if($data['book']->names): ?>
     <div class="editor">
-        <?php echo 'Editeur : '.$data['book']->names;?>
+        <?php echo'Editeur: '. $data['book']->names;?>
     </div>
 <?php endif; ?>
 <?php if($data['book']->name): ?>

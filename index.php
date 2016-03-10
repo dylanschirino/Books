@@ -31,11 +31,11 @@ try {
 include ('routes.php');
 
 $defaultRoute=$routes['default'];
-
 $routeParts=explode('_',$defaultRoute);
 
 $a = isset($_REQUEST['a'])?$_REQUEST['a']:$routeParts[0];// affichera index
 $e = isset($_REQUEST['e'])?$_REQUEST['e']:$routeParts[1];// affichera books, les mots decrivent les actions a faire
+
 
 
 if (!in_array($a.'_'.$e,$routes)){
