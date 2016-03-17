@@ -1,5 +1,9 @@
 <?php
 
+namespace Controller;
+
+use Model\Books;
+
 class BooksController
 {
     private $books_model = null;
@@ -18,7 +22,6 @@ class BooksController
 
     function show()
     {
-
 
         if (isset($_GET['id'])) {
             $id = intval($_GET['id']); //pour empecher les injections sql on ne prend que des entiers ici avec intval

@@ -5,6 +5,10 @@
  * Date: 5/03/16
  * Time: 12:15
  */
+namespace Controller;
+
+use Model\Editors;
+
 class EditorsController
 {
     private $editors_model = null;

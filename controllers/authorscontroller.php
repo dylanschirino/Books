@@ -5,6 +5,10 @@
  * Date: 5/03/16
  * Time: 10:58
  */
+namespace Controller;
+
+use Model\Authors;
+
 class AuthorsController
 {
     private $authors_model = null;
@@ -25,7 +29,6 @@ class AuthorsController
     function show()
     {
         //include('Authors.php');
-
         if (isset($_GET['id'])) {
             $id = intval($_GET['id']); //pour empecher les injections sql on ne prend que des entiers ici avec intval
             $author =$this->authors_model->find($id);
