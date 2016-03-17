@@ -20,7 +20,8 @@ class Books extends Model
     }
 
     public function getBooksByAuthorId($id){
-        $sql = 'SELECT books.* FROM books JOIN authors ON (authors.id=author_id) WHERE authors.id=:id
+        $sql = 'SELECT books.* FROM books JOIN author_book ON books.id=author_book.book_id JOIN authors ON
+authors.id=author_id WHERE authors.id = :id
         ';
         $pdoSt = $this->connection->prepare($sql);
         $pdoSt->execute(['id'=>$id]);

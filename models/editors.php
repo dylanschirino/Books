@@ -17,4 +17,11 @@ class Editors extends Model
         $pdoSt->execute(['id'=>$id]);
         return $pdoSt->fetchAll();
     }
+    public function getEditorsByAuthorId($id){
+        $sql = ' SELECT DISTINCT editors.* FROM authors JOIN author_book ON authors.id=author_book.author_id JOIN books ON
+books.id=book_id JOIN editors ON books.editor_id=editors.id WHERE authors.id = :id';
+        $pdoSt = $this->connection->prepare($sql);
+        $pdoSt->execute(['id'=>$id]);
+        return $pdoSt->fetchAll();
+    }
 }

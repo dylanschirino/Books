@@ -14,7 +14,7 @@
 <?php endif; ?>
 <?php if($data['editor']->url): ?>
     <div class="url">
-        <?php echo 'Site Web : '.$data['editor']->url;?>
+        <a href="<?php echo $data['editor']->url;?>">Site Internet de l'éditeur</a>
     </div>
 <?php endif; ?>
 <?php if($data['editor']->summary): ?>
@@ -33,20 +33,22 @@
     </div>
 <?php endif; ?>
 <?php if($data['authors']): ?>
+    <h2>Auteur&nbsp;:</h2>
     <ul class="auteur">
         <?php foreach($data['authors'] as $author) : ?>
             <li class="author">
-                <a href="?a=show&e=authors&id=<?php echo $author->id;?>"><?php echo $author->name;?></a>
+                <a href="?a=show&e=authors&id=<?php echo $author->id;?>&with=editors,books"><?php echo $author->name;?></a>
             </li>
         <?php endforeach; ?>
     </ul>
 <?php endif; ?>
 
 <?php if($data['books']): ?>
+    <h2>Livre&nbsp;:</h2>
     <ul class="livre">
         <?php foreach($data['books'] as $book) : ?>
             <li class="author">
-                <a href="?a=show&e=books&id=<?php echo $book->id;?>"><?php echo $book->title;?></a>
+                <a href="?a=show&e=books&id=<?php echo $book->id;?>&with=authors,editors"><?php echo $book->title;?></a>
             </li>
         <?php endforeach; ?>
     </ul>

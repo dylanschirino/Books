@@ -42,7 +42,7 @@ class AuthorsController
                 $with = explode(',', $_GET['with']);
                 if (in_array('editors', $with)) { //on verifie si le mots authors est dans le tableau
                     $editors_model = new Editors(); // on crée un nouveau model des auteurs
-                    $editors = $editors_model->getEditorsByBookId($author->id);
+                    $editors = $editors_model->getEditorsByAuthorId($author->id);
                 }
             }
             $books = null;
@@ -50,7 +50,7 @@ class AuthorsController
                 $with = explode(',', $_GET['with']);
                 if (in_array('books', $with)) { //on verifie si le mots authors est dans le tableau
                     $books_model = new Books(); // on crée un nouveau model des auteurs
-                    $books = $books_model->getBooksByEditorId($author->id);
+                    $books = $books_model->getBooksByAuthorId($author->id);
                 }
             }
             return ['author' => $author, 'view' => $view,'page_title'=>$page_title,'editors'=>$editors,'books'=>$books];

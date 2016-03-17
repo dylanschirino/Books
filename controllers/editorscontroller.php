@@ -40,7 +40,7 @@ class EditorsController
                 $with = explode(',',$_GET['with']);
                 if(in_array('authors',$with)){ //on verifie si le mots authors est dans le tableau
                     $authors_model = new Authors(); // on crée un nouveau model des auteurs
-                    $authors = $authors_model->getAuthorsByBookId($editor->id);
+                    $authors = $authors_model->getAuthorsByEditorId($editor->id);
                 }
             }
             $books = null;

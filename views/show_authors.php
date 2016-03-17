@@ -22,6 +22,7 @@
 <?php endif; ?>
 
 <?php if($data['books']): ?>
+    <h2>Livres&nbsp;:</h2>
     <ul class="livre">
         <?php foreach($data['books'] as $book) : ?>
             <li class="author">
@@ -32,10 +33,11 @@
 <?php endif; ?>
 
 <?php if($data['editors']): ?>
+    <h2>Editeur&nbsp;:</h2>
     <ul class="editeur">
         <?php foreach($data['editors'] as $editor) : ?>
             <li class="author">
-                <a href="?a=show&e=editors&id=<?php echo $editor->id;?>"><?php echo $editor->names;?></a>
+                <a href="?a=show&e=editors&id=<?php echo $editor->id;?>&with=authors,books"><?php echo $editor->names;?></a>
             </li>
         <?php endforeach; ?>
     </ul>
