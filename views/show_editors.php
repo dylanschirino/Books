@@ -22,11 +22,6 @@
         <?php echo 'Résumé : '.$data['editor']->summary;?>
     </div>
 <?php endif; ?>
-<?php if($data['editor']->nationality_id): ?>
-    <div class="nationality">
-        <?php echo 'Nationalité : '.$data['editor']->nationality;?>
-    </div>
-<?php endif; ?>
 <?php if($data['editor']->date_of_creation): ?>
     <div class="creation">
         <?php echo 'Date de création : '.$data['editor']->date_of_creation;?>
@@ -37,11 +32,22 @@
         <?php echo 'Date de fermeture : '.$data['editor']->date_of_closing;?>
     </div>
 <?php endif; ?>
-<?php if($data['editor']->title): ?>
-    <div class="livre">
-        <?php echo'Livre : '.$data['editor']->title;?>
-    </div>
+<?php if($data['authors']): ?>
+    <ul class="auteur">
+        <?php foreach($data['authors'] as $author) : ?>
+            <li class="author">
+                <a href="?a=show&e=authors&id=<?php echo $author->id;?>"><?php echo $author->name;?></a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
 <?php endif; ?>
-<div class="alleditors">
-    <a href="<?php echo $_SERVER['PHP_SELF'];?>">Retour vers la page des Editeurs </a>
-</div>
+
+<?php if($data['books']): ?>
+    <ul class="livre">
+        <?php foreach($data['books'] as $book) : ?>
+            <li class="author">
+                <a href="?a=show&e=books&id=<?php echo $book->id;?>"><?php echo $book->title;?></a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>

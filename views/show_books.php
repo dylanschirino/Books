@@ -15,16 +15,22 @@
     <?php echo 'Résumer : '.$data['book']->summary;?>
 </div>
 <?php endif; ?>
-<?php if($data['book']->name): ?>
-    <div class="editor">
-        <?php echo'Editeur: '. $data['book']->name;?>
-    </div>
+<?php if($data['authors']): ?>
+    <ul class="auteur">
+        <?php foreach($data['authors'] as $author) : ?>
+        <li class="author">
+            <a href="?a=show&e=authors&id=<?php echo $author->id;?>"><?php echo $author->name;?></a>
+        </li>
+        <?php endforeach; ?>
+    </ul>
 <?php endif; ?>
-<?php if($data['book']->name): ?>
-    <div class="auteur">
-        <?php echo'Auteur : '.$data['book']->name;?>
-    </div>
+<?php if($data['editors']): ?>
+    <ul class="editeur">
+        <?php foreach($data['editors'] as $editor) : ?>
+            <li class="author">
+                <a href="?a=show&e=editors&id=<?php echo $editor->id;?>"><?php echo $editor->names;?></a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
 <?php endif; ?>
-<div class="allbooks">
-    <a href="<?php echo $_SERVER['PHP_SELF'];?>">Retour vers tous les livres </a>
-</div>
+

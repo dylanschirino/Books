@@ -15,21 +15,29 @@
         <?php echo 'Mort le  : '.$data['author']->death_date;?>
     </div>
 <?php endif; ?>
-<?php if($data['author']->nationality_id): ?>
-    <div class="nationality">
-        <?php echo'Nationalité : '.$data['author']->nationality;?>
-    </div>
-<?php endif; ?>
 <?php if($data['author']->bio): ?>
     <div class="bio">
         <?php echo 'Description : '.$data['author']->bio;?>
     </div>
 <?php endif; ?>
-<?php if($data['author']->title): ?>
-    <div class="livre">
-        <?php echo 'Livre : '.$data['author']->title;?>
-    </div>
+
+<?php if($data['books']): ?>
+    <ul class="livre">
+        <?php foreach($data['books'] as $book) : ?>
+            <li class="author">
+                <a href="?a=show&e=books&id=<?php echo $book->id;?>"><?php echo $book->title;?></a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
 <?php endif; ?>
-<div class="allbooks">
-    <a href="<?php echo $_SERVER['PHP_SELF'];?>">Retour vers les auteurs </a>
-</div>
+
+<?php if($data['editors']): ?>
+    <ul class="editeur">
+        <?php foreach($data['editors'] as $editor) : ?>
+            <li class="author">
+                <a href="?a=show&e=editors&id=<?php echo $editor->id;?>"><?php echo $editor->names;?></a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+

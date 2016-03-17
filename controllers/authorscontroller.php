@@ -8,6 +8,8 @@
 namespace Controller;
 
 use Model\Authors;
+use Model\Books;
+use Model\Editors;
 
 class AuthorsController
 {
@@ -34,7 +36,24 @@ class AuthorsController
             $author =$this->authors_model->find($id);
             $view = 'show_authors.php';
             $page_title='La Fiche de l\'auteur: '.$author->name;
-            return ['author' => $author, 'view' => $view,'page_title'=>$page_title];
+
+            $editors = null;
+            if (isset($_GET['with'])) {  //on regarde si la clé with existe si oui on explose sont contenu
+                $with = explode(',', $_GET['with']);
+                if (in_array('editors', $with)) { //on verifie si le mots authors est dans le tableau
+                    $editors_model = new Editors(); // on crée un nouveau model des auteurs
+                    $editors = $editors_model->getEditorsByBookId($author->id);
+                }
+            }
+            $books = null;
+            if (isset($_GET['with'])) {  //on regarde si la clé with existe si oui on explose sont contenu
+                $with = explode(',', $_GET['with']);
+                if (in_array('books', $with)) { //on verifie si le mots authors est dans le tableau
+                    $books_model = new Books(); // on crée un nouveau model des auteurs
+                    $books = $books_model->getBooksByEditorId($author->id);
+                }
+            }
+            return ['author' => $author, 'view' => $view,'page_title'=>$page_title,'editors'=>$editors,'books'=>$books];
         } else {
             die('il manque un identifiant a votre livre');
         }
