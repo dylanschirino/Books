@@ -16,7 +16,7 @@
 </div>
 <?php endif; ?>
 <?php if($data['authors']): ?>
-    <h2>Auteur&nbsp;:</h2>
+    <h2>Auteurs&nbsp;:</h2>
     <ul class="auteur">
         <?php foreach($data['authors'] as $author) : ?>
         <li class="author">
@@ -26,7 +26,7 @@
     </ul>
 <?php endif; ?>
 <?php if($data['editors']): ?>
-    <h2>Editeur&nbsp;:</h2>
+    <h2>Editeurs&nbsp;:</h2>
     <ul class="editeur">
         <?php foreach($data['editors'] as $editor) : ?>
             <li class="author">

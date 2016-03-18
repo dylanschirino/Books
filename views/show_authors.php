@@ -33,7 +33,7 @@
 <?php endif; ?>
 
 <?php if($data['editors']): ?>
-    <h2>Editeur&nbsp;:</h2>
+    <h2>Editeurs&nbsp;:</h2>
     <ul class="editeur">
         <?php foreach($data['editors'] as $editor) : ?>
             <li class="author">

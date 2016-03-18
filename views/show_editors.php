@@ -33,7 +33,7 @@
     </div>
 <?php endif; ?>
 <?php if($data['authors']): ?>
-    <h2>Auteur&nbsp;:</h2>
+    <h2>Auteurs&nbsp;:</h2>
     <ul class="auteur">
         <?php foreach($data['authors'] as $author) : ?>
             <li class="author">
@@ -44,7 +44,7 @@
 <?php endif; ?>
 
 <?php if($data['books']): ?>
-    <h2>Livre&nbsp;:</h2>
+    <h2>Livres&nbsp;:</h2>
     <ul class="livre">
         <?php foreach($data['books'] as $book) : ?>
             <li class="author">
